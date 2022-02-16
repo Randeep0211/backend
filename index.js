@@ -4,11 +4,13 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const app = express();
 const Routes = require('./src/routes/product');
+const categoryRoutes = require('./src/routes/category');
 
 app.use(cors());
 app.use('/static', express.static('public'));
 app.use(bodyParser.json());
 app.use(Routes);
+app.use(categoryRoutes);
 
 mongoose
   .connect(
