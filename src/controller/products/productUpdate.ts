@@ -1,6 +1,7 @@
 const Product = require('../../models/product');
+import {Request , Response} from 'express'
 
-const updateProduct = async (req, res) => {
+const updateProduct = async (req:Request, res:Response) => {
   let id = req.params.productId;
 
   let update1 = req.body.name;

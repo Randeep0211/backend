@@ -1,6 +1,7 @@
 const Product = require('../../models/product');
+import {Request , Response} from 'express'
 
-const deleteProduct = async (req, res) => {
+const deleteProduct = async (req:Request, res:Response) => {
   let id = req.params.productId;
 
   try {

@@ -1,6 +1,7 @@
 const Category = require('../../models/category');
+import {Request , Response} from 'express'
 
-const updateCategory = async (req, res) => {
+const updateCategory = async (req:Request, res:Response) => {
   let id = req.params.categoryId;
   let update = req.body.name;
 

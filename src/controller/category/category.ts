@@ -1,6 +1,7 @@
 const Category = require('../../models/category');
+import {Request , Response} from 'express'
 
-const createCategory = async (req, res) => {
+const createCategory = async (req:Request, res:Response) => {
   const category = new Category(req.body);
 
   try {

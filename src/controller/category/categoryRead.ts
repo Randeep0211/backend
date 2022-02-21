@@ -1,7 +1,8 @@
 const { response } = require('express');
 const Category = require('../../models/category');
+import {Request , Response} from 'express'
 
-const readCategory = async (req, res) => {
+const readCategory = async (req:Request, res:Response) => {
   let id = req.params.categoryId;
   try {
     const response = await Category.findById(id);

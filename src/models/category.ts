@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+// import mongoose from 'mongoose'
 
 const categorySchema = new mongoose.Schema(
   {
@@ -9,7 +10,7 @@ const categorySchema = new mongoose.Schema(
       maxlength: 32,
     },
   },
-  { timestamp: true }
+ 
 );
 
 module.exports = mongoose.model('Category', categorySchema);

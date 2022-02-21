@@ -1,4 +1,5 @@
-const express = require('express');
+// const express = require('express');
+import express from 'express';
 const routes = express.Router();
 
 const createCategory = require('../controller/category/category');
