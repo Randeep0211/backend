@@ -1,13 +1,12 @@
 const Product = require('../../models/product')
 import { Request , Response } from 'express'
 
+const filterByRange = async(req:Request,res:Response)=>{
 
-const filterProduct = async(req:Request , res:Response)=>{
-  const {price} = req.query;
- 
+  const {price} = req.query
   try {
-    const response = await Product.find({price})
-    res.json({response})
+    const result = await Product.find({price:{$lt:price}})
+    res.json({result})
     
   } catch (error) {
     return res.status(403).json({
@@ -16,4 +15,4 @@ const filterProduct = async(req:Request , res:Response)=>{
   }
 }
 
-module.exports = filterProduct;
+module.exports = filterByRange
