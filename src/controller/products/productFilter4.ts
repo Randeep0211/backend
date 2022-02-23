@@ -5,7 +5,7 @@ const autoComplete = async(req:Request,res:Response)=>{
 
   const {name} = req.query
   try {
-    const result = await Product.find({}).autocomplete({name:'c'})
+    const result = await Product.find({name:{$eq:'c'}})
     res.json({result})
     
   } catch (error) {

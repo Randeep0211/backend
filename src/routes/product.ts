@@ -10,6 +10,8 @@ const filterByUpperPrice = require('../controller/products/productFilter1');
 const filterBySetRange = require('../controller/products/productFilter3')
 const autoComplete = require('../controller/products/productFilter4')
 const filterByDate = require('../controller/products/dateFilter')
+const filterByPrice = require('../controller/products/priceSorting')
+const filterByPages = require('../controller/products/pagination')
 
 
 routes.post('/product', getProduct);
@@ -22,5 +24,7 @@ routes.get('/product/filter/least' , filterByUpperPrice);
 routes.get('/product/filter/range', filterBySetRange)
 routes.get('/product/filter/auto', autoComplete)
 routes.get('/product/filter/date' , filterByDate)
+routes.get('/product/filter/price' , filterByPrice)
+routes.get('/product/filter/page' , filterByPages)
 
 module.exports = routes;

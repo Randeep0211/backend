@@ -2,21 +2,25 @@ const Product = require('../../models/product')
 import { Request , Response } from 'express'
 const moment = require('moment')
 
-const today = moment().startOf('day')
+// const today = moment().startOf('day')
 
 
 const filterByDate = async(req:Request,res:Response)=>{
 
-  const {createdAt} = req.query
-  const startDate= createdAt
-  const endDate = createdAt
+  const {start,end} = req.query
+
+  console.log(req.query)
   
+
+  const startDate = moment(start).startOf('day')
+  console.log(startDate.toDate())
+  const endDate = moment(end).endOf('day')
   try {
     // const response = await Product.find({createdAt:{ $gte: today.toDate(),
     // $lte: moment(today).endOf('day').toDate()}})
     // res.json({response})
 
-    const response = await Product.find({date:{$gte:startDate , $lt:endDate}})
+    const response = await Product.find({createdAt:{$gte:startDate.toDate() , $lte:endDate.toDate()}})
     res.json({response})
     
   } catch (error) {
