@@ -10,6 +10,6 @@ const groupCategory = require('../controller/category/categoryByProduct')
 routes.post('/category/create', createCategory);
 routes.put('/category/update/:categoryId', updateCategory);
 routes.get('/category/read/:categoryId', readCategory);
-// routes.get('/category/read/prdouct' , groupCategory);
+routes.get('/category/read/product' , groupCategory);
 
 module.exports = routes;

@@ -1,5 +1,7 @@
 // const mongoose = require('mongoose');
 import mongoose from 'mongoose'
+import { Schema, model, Document, Types } from 'mongoose';
+
 
 const productSchema = new mongoose.Schema({
   name: {
@@ -19,8 +21,14 @@ const productSchema = new mongoose.Schema({
     required: true,
     maxlength: 32,
   },
+
+  category:{
+    type: 'ObjectId',
+    ref:'Category',
+    maxlength:32
+  }
 },{
   timestamps:true
 });
-productSchema.plugin
+
 module.exports = mongoose.model('Product', productSchema);

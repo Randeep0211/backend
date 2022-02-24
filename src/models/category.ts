@@ -9,6 +9,12 @@ const categorySchema = new mongoose.Schema(
       required: true,
       maxlength: 32,
     },
+    product:{
+      type:'ObjectId',
+      ref:"Product",
+      maxlength:32
+    }
+
   },
  
 );

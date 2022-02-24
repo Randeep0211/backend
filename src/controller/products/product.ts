@@ -1,12 +1,17 @@
 const Product = require('../../models/product');
+import mongoose from 'mongoose'
+
 import {Request , Response} from 'express'
+import { ObjectId } from 'mongodb';
 
 
 
 const getProduct = async (req:Request, res:Response) => {
-  const product = new Product(req.body);
+
+
+
   try {
-    const response = await product.save();
+    const response = await Product.create(req.body);
     res.json({ response });
   } catch (error) {
     return res.status(403).json({

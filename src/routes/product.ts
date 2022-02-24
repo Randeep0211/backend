@@ -12,6 +12,7 @@ const autoComplete = require('../controller/products/productFilter4')
 const filterByDate = require('../controller/products/dateFilter')
 const filterByPrice = require('../controller/products/priceSorting')
 const filterByPages = require('../controller/products/pagination')
+const GroupByCategory = require('../controller/products/categoryGroup')
 
 
 routes.post('/product', getProduct);
@@ -26,5 +27,6 @@ routes.get('/product/filter/auto', autoComplete)
 routes.get('/product/filter/date' , filterByDate)
 routes.get('/product/filter/price' , filterByPrice)
 routes.get('/product/filter/page' , filterByPages)
+routes.get('/product/join' , GroupByCategory)
 
 module.exports = routes;
