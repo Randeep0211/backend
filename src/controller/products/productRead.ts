@@ -1,4 +1,4 @@
-const Product = require('../../models/product');
+import Product from '../../models/product';
 import {Request , Response} from 'express'
 
 const readProduct = async (req:Request , res:Response) => {
@@ -12,4 +12,4 @@ const readProduct = async (req:Request , res:Response) => {
   }
 };
 
-module.exports = readProduct;
+export default readProduct;

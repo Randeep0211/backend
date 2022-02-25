@@ -2,14 +2,14 @@
 import express from 'express';
 const routes = express.Router();
 
-const createCategory = require('../controller/category/category');
-const updateCategory = require('../controller/category/categoryUpdate');
-const readCategory = require('../controller/category/categoryRead');
-const groupCategory = require('../controller/category/categoryByProduct')
+import createCategory from '../controller/category/category';
+import updateCategory from '../controller/category/categoryUpdate';
+import readCategory from '../controller/category/categoryRead';
+import groupCategory from '../controller/category/categoryByProduct';
 
 routes.post('/category/create', createCategory);
 routes.put('/category/update/:categoryId', updateCategory);
 routes.get('/category/read/:categoryId', readCategory);
-routes.get('/category/read/product' , groupCategory);
+routes.get('/category/product' , groupCategory);
 
-module.exports = routes;
+export default routes;

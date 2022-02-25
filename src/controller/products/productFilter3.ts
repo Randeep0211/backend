@@ -1,4 +1,4 @@
-const Product = require('../../models/product')
+import Product from '../../models/product'
 import { Request , Response } from 'express'
 
 const filterBySetRange = async(req:Request,res:Response)=>{
@@ -15,4 +15,4 @@ const filterBySetRange = async(req:Request,res:Response)=>{
   }
 }
 
-module.exports = filterBySetRange
+export default filterBySetRange;

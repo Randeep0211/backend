@@ -1,32 +1,31 @@
-const express = require('express');
+import  express  from 'express';
 const routes = express.Router();
-const getProduct = require('../controller/products/product');
-const readProduct = require('../controller/products/productRead');
-const updateProduct = require('../controller/products/productUpdate');
-const deleteProduct = require('../controller/products/productDelete');
-const filterProduct = require('../controller/products/productFilter');
-const filterByRange = require('../controller/products/productFilter2');
-const filterByUpperPrice = require('../controller/products/productFilter1');
-const filterBySetRange = require('../controller/products/productFilter3')
-const autoComplete = require('../controller/products/productFilter4')
-const filterByDate = require('../controller/products/dateFilter')
-const filterByPrice = require('../controller/products/priceSorting')
-const filterByPages = require('../controller/products/pagination')
-const GroupByCategory = require('../controller/products/categoryGroup')
+import createProduct from '../controller/products/product';
+import readProduct from '../controller/products/productRead';
+import updateProduct from '../controller/products/productUpdate';
+import deleteProduct from '../controller/products/productDelete';
+import filterProduct from '../controller/products/productFilter';
+import filterByRange from '../controller/products/productFilter2';
+import filterByUpperPrice from '../controller/products/productFilter1';
+import filterBySetRange from '../controller/products/productFilter3';
+import autoComplete from '../controller/products/productFilter4';
+import filterByDate from '../controller/products/dateFilter';
+import filterByPrice from '../controller/products/priceSorting';
+import filterByPages from '../controller/products/pagination';
 
 
-routes.post('/product', getProduct);
+routes.post('/product', createProduct);
 routes.get('/product/read', readProduct);
 routes.put('/product/update/:productId', updateProduct);
 routes.delete('/product/delete/:productId', deleteProduct);
 routes.get('/product/filter' , filterProduct);
 routes.get('/product/filter/limit' , filterByRange);
 routes.get('/product/filter/least' , filterByUpperPrice);
-routes.get('/product/filter/range', filterBySetRange)
-routes.get('/product/filter/auto', autoComplete)
-routes.get('/product/filter/date' , filterByDate)
-routes.get('/product/filter/price' , filterByPrice)
-routes.get('/product/filter/page' , filterByPages)
-routes.get('/product/join' , GroupByCategory)
+routes.get('/product/filter/range', filterBySetRange);
+routes.get('/product/auto', autoComplete);
+routes.get('/product/filter/date' , filterByDate);
+routes.get('/product/filter/price'  ,filterByPrice);
+routes.get('/product/filter/page' , filterByPages);
+routes.get('product/filter' , filterByDate , filterByPages , autoComplete , filterByPrice  )
 
-module.exports = routes;
+export default routes;

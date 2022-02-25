@@ -1,4 +1,4 @@
-const Product = require('../../models/product')
+import Product from '../../models/product'
 import { Request , Response } from 'express'
 const moment = require('moment')
 
@@ -30,4 +30,4 @@ const filterByDate = async(req:Request,res:Response)=>{
   }
 }
 
-module.exports = filterByDate
+export default filterByDate;

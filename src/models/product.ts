@@ -23,7 +23,7 @@ const productSchema = new mongoose.Schema({
   },
 
   category:{
-    type: 'ObjectId',
+    type:'ObjectId',
     ref:'Category',
     maxlength:32
   }
@@ -31,4 +31,4 @@ const productSchema = new mongoose.Schema({
   timestamps:true
 });
 
-module.exports = mongoose.model('Product', productSchema);
+export default mongoose.model('Product', productSchema);

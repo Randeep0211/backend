@@ -2,10 +2,10 @@
 import express from 'express';
 const cors = require('cors');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
+import bodyParser from 'body-parser'
 const app = express();
-const Routes = require('./src/routes/product');
-const categoryRoutes = require('./src/routes/category');
+import Routes from './src/routes/product';
+import categoryRoutes from './src/routes/category';
 
 app.use(cors());
 app.use('/static', express.static('public'));

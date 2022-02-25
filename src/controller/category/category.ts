@@ -1,4 +1,4 @@
-const Category = require('../../models/category');
+import Category from '../../models/category';
 import {Request , Response} from 'express'
 
 const createCategory = async (req:Request, res:Response) => {
@@ -14,4 +14,4 @@ const createCategory = async (req:Request, res:Response) => {
   }
 };
 
-module.exports = createCategory;
+export default createCategory;

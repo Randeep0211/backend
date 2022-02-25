@@ -1,4 +1,4 @@
-const Product = require('../../models/product')
+import Product from '../../models/product'
 import { Request , Response } from 'express'
 
 
@@ -16,4 +16,4 @@ const filterProduct = async(req:Request , res:Response)=>{
   }
 }
 
-module.exports = filterProduct;
+export default filterProduct;

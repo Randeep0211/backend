@@ -1,7 +1,10 @@
-const Category = require('../../models/category');
+import Category from '../../models/category';
 // const Product = require('../../models/product')
 import {Request , Response} from 'express'
 
+
+
+const db:any = ''
 
 const groupCategory = async(req:Request,res:Response)=>{
 
@@ -10,20 +13,26 @@ const groupCategory = async(req:Request,res:Response)=>{
     const response = await Category.aggregate([
       {
         $lookup:{
-          from:'getProducts',
-          localField:'name',
-          foreignField:'name',
-          as:'products'
+          from:'products',
+          localField:'_id',
+          foreignField:'category',
+          as:'products_docs'
 
         }
       }
     ])
+
+    // const response = await Category.aggregate.lookup({
+    //   from:'products',
+    //   localField:'_id',
+    //   foreignField:'categories',
+    //   as:'products'
+    // })
     res.json({response})
+    console.log(response)
   } catch (error) {
-    res.status(400).json({
-      error: 'Category not found',
-    });
+    console.log(error)
   }
 }
 
-module.exports= groupCategory
+export default groupCategory

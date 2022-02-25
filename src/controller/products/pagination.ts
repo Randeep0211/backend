@@ -1,4 +1,4 @@
-const Product = require('../../models/product')
+import Product from '../../models/product'
 import { Request , Response } from 'express'
 import paginate from 'mongoose-paginate-v2';
 
@@ -11,7 +11,7 @@ const filterByPages = async(req:Request,res:Response)=>{
 
   try {
 
-    const response = await Product.find({}).skip(parseInt(page) * parseInt(limit)).limit(limit)
+    const response = await Product.find({}).skip(parseInt(page) * parseInt(limit)).limit(parseInt(limit))
     res.json({response,currentPage:page})
   } catch (error) {
     return res.status(403).json({
@@ -20,4 +20,4 @@ const filterByPages = async(req:Request,res:Response)=>{
   }
 }
 
-module.exports = filterByPages
+export default filterByPages;

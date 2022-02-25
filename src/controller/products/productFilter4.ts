@@ -1,12 +1,13 @@
-const Product = require('../../models/product')
+import Product from '../../models/product'
 import { Request , Response } from 'express'
 
 const autoComplete = async(req:Request,res:Response)=>{
 
-  const {name} = req.query
+  const {name} = <{name:string}>req.query
   try {
-    const result = await Product.find({name:{$eq:'c'}})
+  const result = await Product.find({name:{$regex:new RegExp(name,'g')}})
     res.json({result})
+    console.log(result)
     
   } catch (error) {
     return res.status(403).json({
@@ -15,4 +16,4 @@ const autoComplete = async(req:Request,res:Response)=>{
   }
 }
 
-module.exports = autoComplete
+export default autoComplete;

@@ -1,4 +1,4 @@
-const Product = require('../../models/product')
+import Product from '../../models/product'
 import { Request , Response } from 'express'
 
 const filterByPrice = async(req:Request,res:Response)=>{
@@ -6,7 +6,7 @@ const filterByPrice = async(req:Request,res:Response)=>{
   const {price}=req.query
 
   try {
-    const response = await Product.find({}).sort({price:price})
+    const response = await Product.find({}).sort({price})
     res.json({response})
   } catch (error) {
     return res.status(403).json({
@@ -15,4 +15,4 @@ const filterByPrice = async(req:Request,res:Response)=>{
   }
 }
 
-module.exports = filterByPrice
+export default filterByPrice;

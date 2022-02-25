@@ -1,4 +1,4 @@
-const Product = require('../../models/product');
+import Product from '../../models/product'
 import {Request , Response} from 'express'
 
 const deleteProduct = async (req:Request, res:Response) => {
@@ -14,4 +14,4 @@ const deleteProduct = async (req:Request, res:Response) => {
   }
 };
 
-module.exports = deleteProduct;
+export default deleteProduct;

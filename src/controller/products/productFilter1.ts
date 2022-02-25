@@ -1,4 +1,4 @@
-const Product = require('../../models/product')
+import Product from '../../models/product'
 import { Request , Response } from 'express'
 
 
@@ -15,4 +15,4 @@ const filterByUpperPrice = async(req:Request,res:Response)=>{
     }
   }
 
-  module.exports = filterByUpperPrice
+  export default filterByUpperPrice;

@@ -9,14 +9,8 @@ const categorySchema = new mongoose.Schema(
       required: true,
       maxlength: 32,
     },
-    product:{
-      type:'ObjectId',
-      ref:"Product",
-      maxlength:32
-    }
-
   },
  
 );
 
-module.exports = mongoose.model('Category', categorySchema);
+export default mongoose.model('Category', categorySchema);

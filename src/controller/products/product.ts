@@ -1,4 +1,4 @@
-const Product = require('../../models/product');
+import Product from '../../models/product'
 import mongoose from 'mongoose'
 
 import {Request , Response} from 'express'
@@ -6,12 +6,12 @@ import { ObjectId } from 'mongodb';
 
 
 
-const getProduct = async (req:Request, res:Response) => {
+const createProduct = async (req:Request, res:Response) => {
 
-
+  const product = new Product(req.body)
 
   try {
-    const response = await Product.create(req.body);
+    const response = await product.save();
     res.json({ response });
   } catch (error) {
     return res.status(403).json({
@@ -21,4 +21,4 @@ const getProduct = async (req:Request, res:Response) => {
   console.log('req.body', req.body);
 };
 
-module.exports = getProduct;
+export default createProduct;
