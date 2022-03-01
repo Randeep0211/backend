@@ -3,7 +3,17 @@ import { query, Request, Response } from 'express';
 import moment from 'moment';
 
 const filterProduct = async (req: Request, res: Response) => {
-  const { sortBy, maxPrice, minPrice, start, end, name, quantity } = <
+  const {
+    sortBy,
+    maxPrice,
+    minPrice,
+    start,
+    end,
+    name,
+    order = 'asc',
+    minQuantity,
+    maxQuantity,
+  } = <
     {
       start: string;
       end: string;
@@ -12,6 +22,10 @@ const filterProduct = async (req: Request, res: Response) => {
       minPrice: string;
       name: string;
       quantity: string;
+      price: string;
+      order: string;
+      minQuantity: string;
+      maxQuantity: string;
     }
   >req.query;
 
@@ -62,31 +76,52 @@ const filterProduct = async (req: Request, res: Response) => {
     };
   }
 
+  if (maxQuantity && !minQuantity) {
+    filter.quantity = {
+      $gte: maxQuantity,
+    };
+  }
+
+  if (!maxQuantity && minQuantity) {
+    filter.quantity = {
+      $lte: minQuantity,
+    };
+  }
+
+  if (maxQuantity && minQuantity) {
+    filter.quantity = {
+      $lte: maxQuantity,
+      $gte: minQuantity,
+    };
+  }
+
   if (name) {
     filter.name = {
       $regex: new RegExp(name),
     };
   }
 
+  const sort: Record<any, any> = {};
+
   if (sortBy) {
-    filter.sort = { qty: { quantity: -1 } };
+    sort[sortBy] = order;
   }
 
+  console.log(sort);
+
+  // let skip: number = 0;
+
+  // if (page) {
+  //   skip = (parseInt(page) - 1) * parseInt(limit);
+  // }
+
   try {
-    const query = Product.find(filter);
-    // if condition query.sort();
-
-    // query.sort();
-    // query.limit();
-
-    // const response = await query;
-    let quantity = 1;
-
     const response = await Product.find(filter)
-      .sort({ sortBy: quantity })
+      .sort(sort)
       .skip((parseInt(page) - 1) * parseInt(limit))
+      // .skip(skip)
       .limit(parseInt(limit));
-
+    // console.log(response);
     res.json({ response, currentPage: page });
   } catch (error) {
     return res.status(403).json({
