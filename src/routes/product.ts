@@ -13,6 +13,8 @@ import filterByDate from '../controller/products/dateFilter';
 import filterByPrice from '../controller/products/priceSorting';
 import filterByPages from '../controller/products/pagination';
 import updateMultipleProducts from '../controller/products/updateMany';
+import insertMultitpleProducts from '../controller/products/insertMany';
+import deleteManyProducts from '../controller/products/deleteMany';
 
 routes.post('/product', createProduct);
 routes.get('/product/read', readProduct);
@@ -27,5 +29,7 @@ routes.get('/product/filter/date', filterByDate);
 routes.get('/product/filter/price', filterByPrice);
 routes.get('/product/filter/page', filterByPages);
 routes.put('/product/updates', updateMultipleProducts);
+routes.post('/product/insert', insertMultitpleProducts);
+routes.delete('/product/delete', deleteManyProducts);
 
 export default routes;
