@@ -2,16 +2,18 @@
 import express from 'express';
 const cors = require('cors');
 const mongoose = require('mongoose');
-import bodyParser from 'body-parser'
+import bodyParser from 'body-parser';
 const app = express();
 import Routes from './src/routes/product';
 import categoryRoutes from './src/routes/category';
+import userRoutes from './src/routes/signup';
 
 app.use(cors());
 app.use('/static', express.static('public'));
 app.use(bodyParser.json());
 app.use(Routes);
 app.use(categoryRoutes);
+app.use(userRoutes);
 
 mongoose
   .connect(
